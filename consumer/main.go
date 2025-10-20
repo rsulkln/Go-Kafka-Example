@@ -12,7 +12,7 @@ func main() {
 	reader := kafka.NewReader(kafka.ReaderConfig{
 		Brokers:     []string{"localhost:9092"},
 		Topic:       "orders",
-		GroupID:     "order-consumer-group-test3",
+		GroupID:     "order-consumer-group-test4",
 		StartOffset: kafka.FirstOffset,
 	})
 	defer reader.Close()
