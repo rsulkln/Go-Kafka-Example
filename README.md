@@ -37,8 +37,23 @@ Using Golang ensures **high performance** and **low memory usage** for message p
 1. Clone the repository:
 
 ```bash
+
+# Clone repo
 git clone git@github.com:rsulkln/Go-Kafka-Example.git
 cd Go-Kafka-Example
+
+# Start Kafka and Zookeeper
 docker-compose up -d
-go run producer/main.go
+
+# Create and list topics
+docker exec -it kafka /bin/bash
+docker-topics --create --bootstrap-server localhost:9092 --topic orders --partitions 2
+docker-topics --list --bootstrap-server localhost:9092
+# Expected output:
+# __consumer_offsets
+# orders
+
+# Run Producer and Consumers
 go run consumer/main.go
+go run consumer2/main.go
+go run producer/main.go
